@@ -1,0 +1,98 @@
+CREATE DATABASE  IF NOT EXISTS `schooldb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `schooldb`;
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: schooldb
+-- ------------------------------------------------------
+-- Server version	5.7.12-log  
+SET GLOBAL time_zone = '+3:00';
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+--
+
+DROP TABLE IF EXISTS `client`;
+
+CREATE TABLE `client` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nume` varchar(45) DEFAULT NULL,
+  `adresa` varchar(45) DEFAULT NULL,
+  `mail` varchar(45) DEFAULT NULL,
+  
+  PRIMARY KEY (`id`)
+) ;
+
+DROP TABLE IF EXISTS `comanda`;
+CREATE TABLE `comanda`(
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`idClient` int(11) NOT NULL,
+`numeClient` varchar(45) DEFAULT NULL,
+`suma` int,
+PRIMARY KEY(`id`)
+);
+
+DROP TABLE IF EXISTS `comandaProdus`;
+CREATE TABLE `comandaProdus`(
+`idComanda` int(11) NOT NULL AUTO_INCREMENT,
+`idProdus` int(11) NOT NULL,
+`cantitate` int,
+PRIMARY KEY(`idComanda`)
+);
+
+DROP TABLE IF EXISTS `produs`;
+CREATE TABLE `produs`(
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`nume` varchar(45) DEFAULT NULL,
+`cantitate` int,
+`pret` float,
+PRIMARY KEY(`id`)
+);
+
+
+
+
+
+
+LOCK TABLES `client` WRITE;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+UNLOCK TABLES;
+LOCK TABLES `comanda` WRITE;
+/*!40000 ALTER TABLE `comanda` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comanda` ENABLE KEYS */;
+UNLOCK TABLES;
+LOCK TABLES `comandaProdus` WRITE;
+/*!40000 ALTER TABLE `comandaProdus` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comandaProdus` ENABLE KEYS */;
+UNLOCK TABLES;
+LOCK TABLES `produs` WRITE;
+/*!40000 ALTER TABLE `produs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `produs` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+SELECT * FROM client;
+INSERT INTO `client` values (1,'Andrei','baia mare','andrei@gmail.com');
+SELECT * FROM client;
+
+INSERT INTO `produs` values (1,'bla','3','5');
+SELECT * FROM produs;
+
+-- Dump completed on 2017-04-03 15:51:37
